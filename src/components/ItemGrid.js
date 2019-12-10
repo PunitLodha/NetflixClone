@@ -35,15 +35,17 @@ const useStyles = makeStyles({
     },
   },
 });
-const ItemGrid = ({ items, type }) => {
+const ItemGrid = ({ items, type, name }) => {
   const classes = useStyles();
+  const title = type === 'movie' ? 'title' : 'name';
+
   return (
     <div className={classes.container}>
-      <Typography variant="h4">{type}</Typography>
+      <Typography variant="h4">{name}</Typography>
       <ul className={classes.root}>
         {items.map(item => (
-          <li key={item.title} className={classes.list}>
-            <img src={`https://image.tmdb.org/t/p/w342${item.poster_path}`} alt={item.title} />
+          <li key={item[title]} className={classes.list}>
+            <img src={`https://image.tmdb.org/t/p/w342${item.poster_path}`} alt={item[title]} />
           </li>
         ))}
       </ul>
