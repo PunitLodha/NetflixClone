@@ -39,3 +39,31 @@ export const getNowPlayingMovies = async () => {
     .then(data => data);
   return nowPlayingMovies;
 };
+
+export const getTopRatedTvShows = async () => {
+  const topRatedTvShows = await axios
+    .get(`${baseUrl}tv/top_rated?${apiUrl}&language=en-US`)
+    .then(data => data);
+  return topRatedTvShows;
+};
+
+export const getPopularTvShows = async () => {
+  const popularTvShows = await axios
+    .get(`${baseUrl}tv/popular?${apiUrl}&language=en-US`)
+    .then(data => data);
+  return popularTvShows;
+};
+
+export const getOnTheAirTvShows = async () => {
+  const onTheAirTvShows = await axios
+    .get(`${baseUrl}tv/on_the_air?${apiUrl}&language=en-US`)
+    .then(data => data);
+  return onTheAirTvShows;
+};
+
+export const getAiringTodayTvShows = async () => {
+  const airingTodayTvShows = await axios
+    .get(`${baseUrl}tv/airing_today?${apiUrl}&language=en-US`)
+    .then(data => data);
+  return airingTodayTvShows;
+};
