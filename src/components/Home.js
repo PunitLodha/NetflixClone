@@ -16,17 +16,17 @@ const Home = () => {
       tvShows.onTheAir &&
       tvShows.airingToday ? (
         <>
-          <ItemGrid items={movies.topRated} type="movie" name="Top Rated Movies" />
-          <ItemGrid items={tvShows.topRated} type="TV" name="Top Rated TV Shows" />
-          <ItemGrid items={movies.nowPlaying} type="movie" name="Now Playing Movies" />
-          <ItemGrid items={tvShows.onTheAir} type="TV" name="On The Air TV Shows" />
-          <ItemGrid items={movies.popular} type="movie" name="Popular Movies" />
-          <ItemGrid items={tvShows.popular} type="TV" name="Popular TV Shows" />
-          <ItemGrid items={movies.upcoming} type="movie" name="Upcoming Movies" />
-          <ItemGrid items={tvShows.airingToday} type="TV" name="Airing Today TV Shows" />
+          <ItemGrid items={movies.topRated} type="movies" name="Top Rated Movies" />
+          <ItemGrid items={tvShows.topRated} type="tv" name="Top Rated TV Shows" />
+          <ItemGrid items={movies.nowPlaying} type="movies" name="Now Playing Movies" />
+          <ItemGrid items={tvShows.onTheAir} type="tv" name="On The Air TV Shows" />
+          <ItemGrid items={movies.popular} type="movies" name="Popular Movies" />
+          <ItemGrid items={tvShows.popular} type="tv" name="Popular TV Shows" />
+          <ItemGrid items={movies.upcoming} type="movies" name="Upcoming Movies" />
+          <ItemGrid items={tvShows.airingToday} type="tv" name="Airing Today TV Shows" />
         </>
       ) : (
-        <Typography variant="h3" color="secondary">
+        <Typography variant="h3" color="secondary" align="center">
           Loading
         </Typography>
       )}
