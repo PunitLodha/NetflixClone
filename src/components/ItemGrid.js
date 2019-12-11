@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   container: {
@@ -45,7 +46,9 @@ const ItemGrid = ({ items, type, name }) => {
       <ul className={classes.root}>
         {items.map(item => (
           <li key={item[title]} className={classes.list}>
-            <img src={`https://image.tmdb.org/t/p/w342${item.poster_path}`} alt={item[title]} />
+            <Link to={`/${type}/${item.id}`} key={item.id}>
+              <img src={`https://image.tmdb.org/t/p/w342${item.poster_path}`} alt={item[title]} />
+            </Link>
           </li>
         ))}
       </ul>
