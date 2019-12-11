@@ -7,6 +7,8 @@ import Movies from './components/Movies';
 import Tv from './components/Tv';
 import Discover from './components/Discover';
 import MoviesContextProvider from './components/MoviesContext';
+import MovieDetails from './components/MovieDetails';
+import TvDetails from './components/TvDetails';
 
 let theme = createMuiTheme({
   palette: {
@@ -37,9 +39,11 @@ function App() {
             <NavBar />
             <Switch>
               <Route path="/" exact component={Home} />
-              <Route path="/movies" component={Movies} />
-              <Route path="/tv" component={Tv} />
+              <Route path="/movies" exact component={Movies} />
+              <Route path="/tv" exact component={Tv} />
               <Route path="/discover" component={Discover} />
+              <Route path="/movies/:id" component={MovieDetails} />
+              <Route path="/tv/:id" component={TvDetails} />
             </Switch>
           </Router>
         </MoviesContextProvider>
