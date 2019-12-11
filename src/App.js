@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Movies from './components/Movies';
 import Tv from './components/Tv';
 import Discover from './components/Discover';
+import MoviesContextProvider from './components/MoviesContext';
 
 let theme = createMuiTheme({
   palette: {
@@ -15,8 +16,12 @@ let theme = createMuiTheme({
       dark: '##000000',
       contrastText: '#fff',
     },
+    background: {
+      default: '#161616',
+    },
   },
   typography: {
+    fontFamily: '"Oswald","Roboto", "Helvetica", "Arial", sans-serif',
     htmlFontSize: 10,
   },
 });
@@ -25,17 +30,19 @@ theme = responsiveFontSizes(theme);
 function App() {
   return (
     <>
-      <CssBaseline />
       <ThemeProvider theme={theme}>
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/movies" component={Movies} />
-            <Route path="/tv" component={Tv} />
-            <Route path="/discover" component={Discover} />
-          </Switch>
-        </Router>
+        <CssBaseline />
+        <MoviesContextProvider>
+          <Router>
+            <NavBar />
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/movies" component={Movies} />
+              <Route path="/tv" component={Tv} />
+              <Route path="/discover" component={Discover} />
+            </Switch>
+          </Router>
+        </MoviesContextProvider>
       </ThemeProvider>
     </>
   );
