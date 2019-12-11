@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Typography } from '@material-ui/core';
 import {
   getTopRatedMovies,
@@ -7,9 +7,11 @@ import {
   getUpcomingMovies,
 } from '../api/TmdbAPI';
 import ItemGrid from './ItemGrid';
+import { MoviesContext } from './MoviesContext';
 
 const Movies = () => {
-  const [movies, setmovies] = useState([]);
+  const { movies } = useContext(MoviesContext);
+  /* const [movies, setmovies] = useState([]);
 
   useEffect(() => {
     getTopRatedMovies().then(({ data }) => {
@@ -39,7 +41,8 @@ const Movies = () => {
         nowPlaying: data.results,
       }));
     });
-  }, []);
+  }, []); */
+
   return (
     <div>
       {movies.topRated && movies.popular && movies.nowPlaying && movies.upcoming ? (

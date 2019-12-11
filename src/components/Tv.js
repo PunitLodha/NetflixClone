@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Typography } from '@material-ui/core';
 import {
   getOnTheAirTvShows,
@@ -7,9 +7,11 @@ import {
   getAiringTodayTvShows,
 } from '../api/TmdbAPI';
 import ItemGrid from './ItemGrid';
+import { MoviesContext } from './MoviesContext';
 
 const Tv = () => {
-  const [tvShows, settvShows] = useState([]);
+  const { tvShows } = useContext(MoviesContext);
+  /* const [tvShows, settvShows] = useState([]);
 
   useEffect(() => {
     getTopRatedTvShows().then(({ data }) => {
@@ -39,7 +41,8 @@ const Tv = () => {
         airingToday: data.results,
       }));
     });
-  }, []);
+  }, []); */
+
   return (
     <div>
       {tvShows.topRated && tvShows.popular && tvShows.onTheAir && tvShows.airingToday ? (
