@@ -45,7 +45,7 @@ const ItemGrid = ({ items, type, name }) => {
       <Typography variant="h4">{name}</Typography>
       <ul className={classes.root}>
         {items.map(item => (
-          <li key={item[title]} className={classes.list}>
+          <li key={item.id} className={classes.list}>
             <Link to={`/${type}/${item.id}`} key={item.id}>
               <img src={`https://image.tmdb.org/t/p/w342${item.poster_path}`} alt={item[title]} />
             </Link>
