@@ -67,3 +67,12 @@ export const getAiringTodayTvShows = async () => {
     .then(data => data);
   return airingTodayTvShows;
 };
+
+export const getMovieDetails = async id => {
+  const movieDetails = await axios
+    .get(
+      `${baseUrl}movie/${id}?${apiUrl}&append_to_response=videos,recommendations,credits&language=en-US`,
+    )
+    .then(data => data);
+  return movieDetails;
+};
