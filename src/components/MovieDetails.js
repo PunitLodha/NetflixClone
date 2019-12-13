@@ -66,7 +66,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MovieDetails = ({ match }) => {
+const MovieDetails = () => {
   const classes = useStyles();
 
   const { id } = useParams();
