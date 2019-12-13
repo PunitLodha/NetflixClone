@@ -120,7 +120,7 @@ const MovieDetails = () => {
       if (data.videos.results.length > 0) {
         setOtherData(prevState => {
           const trailers = data.videos.results.filter(result => result.type === 'Trailer');
-          const trailer = trailers.len > 0 ? `${trailers[0].key}` : `${data.videos.results[0].key}`;
+          const trailer = trailers[0] ? `${trailers[0].key}` : `${data.videos.results[0].key}`;
           return {
             ...prevState,
             trailer,
