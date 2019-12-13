@@ -9,6 +9,7 @@ import Discover from './components/Discover';
 import MoviesContextProvider from './components/MoviesContext';
 import MovieDetails from './components/MovieDetails';
 import TvDetails from './components/TvDetails';
+import ScrollToTop from './components/ScrollToTop';
 
 let theme = createMuiTheme({
   palette: {
@@ -36,6 +37,7 @@ function App() {
         <CssBaseline />
         <MoviesContextProvider>
           <Router>
+            <ScrollToTop />
             <NavBar />
             <Switch>
               <Route path="/" exact component={Home} />
