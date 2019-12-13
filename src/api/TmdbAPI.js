@@ -76,3 +76,12 @@ export const getMovieDetails = async id => {
     .then(data => data);
   return movieDetails;
 };
+
+export const getTvDetails = async id => {
+  const tvDetails = await axios
+    .get(
+      `${baseUrl}tv/${id}?${apiUrl}&append_to_response=videos,recommendations,credits&language=en-US`,
+    )
+    .then(data => data);
+  return tvDetails;
+};
