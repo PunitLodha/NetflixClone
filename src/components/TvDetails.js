@@ -79,6 +79,7 @@ const TvDetails = () => {
     rating: '',
     runtime: '',
     trailer: '',
+    seasons: '',
   });
 
   useEffect(() => {
@@ -89,6 +90,7 @@ const TvDetails = () => {
       rating: '',
       runtime: '',
       trailer: '',
+      seasons: '',
     });
     getTvDetails(id).then(({ data }) => {
       setTv(data);
@@ -122,7 +124,7 @@ const TvDetails = () => {
       if (data.videos.results.length > 0) {
         setOtherData(prevState => {
           const trailers = data.videos.results.filter(result => result.type === 'Trailer');
-          const trailer = trailers.len > 0 ? `${trailers[0].key}` : `${data.videos.results[0].key}`;
+          const trailer = trailers[0] ? `${trailers[0].key}` : `${data.videos.results[0].key}`;
           return {
             ...prevState,
             trailer,
@@ -136,6 +138,14 @@ const TvDetails = () => {
           createdBy: [...prevState.createdBy, `${item.name}`],
         }));
       });
+
+      setOtherData(prevState => ({
+        ...prevState,
+        seasons:
+          data.number_of_seasons > 1
+            ? `| ${data.number_of_seasons} Seasons`
+            : `| ${data.number_of_seasons} Season`,
+      }));
     });
   }, [id]);
 
@@ -162,9 +172,9 @@ const TvDetails = () => {
               {`${tv.name}`}
             </Typography>
             <Typography variant="h5" className={classes.info}>
-              {`${tv.first_air_date.slice(0, 7)} - ${tv.last_air_date.slice(0, 7)} ${
+              {`${tv.first_air_date.slice(0, 4)} - ${tv.last_air_date.slice(0, 4)} ${
                 otherData.rating
-              } ${otherData.runtime}`}
+              } ${otherData.runtime} ${otherData.seasons}`}
             </Typography>
             <Typography variant="h5" className={classes.overview}>
               {`${tv.overview}`}
