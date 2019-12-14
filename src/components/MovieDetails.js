@@ -136,7 +136,7 @@ const MovieDetails = () => {
         <iframe
           src={`https://www.youtube.com/embed/${otherData.trailer}`}
           title="Trailer"
-          width="1080"
+          width="1280"
           height="600"
           frameBorder="0"
         />
