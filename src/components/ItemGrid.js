@@ -35,7 +35,11 @@ const useStyles = makeStyles({
       transform: 'translateX(2rem)',
     },
   },
+  poster: {
+    borderRadius: '2rem',
+  },
 });
+
 const ItemGrid = ({ items, type, name }) => {
   const classes = useStyles();
   const title = type === 'movie' ? 'title' : 'name';
@@ -47,7 +51,11 @@ const ItemGrid = ({ items, type, name }) => {
         {items.map(item => (
           <li key={item.id} className={classes.list}>
             <Link to={`/${type}/${item.id}`} key={item.id}>
-              <img src={`https://image.tmdb.org/t/p/w342${item.poster_path}`} alt={item[title]} />
+              <img
+                src={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
+                alt={item[title]}
+                className={classes.poster}
+              />
             </Link>
           </li>
         ))}
