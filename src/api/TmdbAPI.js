@@ -85,3 +85,20 @@ export const getTvDetails = async id => {
     .then(data => data);
   return tvDetails;
 };
+
+export const getDiscoverResults = async (type, rating, genre, sortBy, year) => {
+  if (type === 'movie') {
+    const results = await axios
+      .get(
+        `${baseUrl}discover/movie?${apiUrl}&language=en-US&sort_by=${sortBy}&primary_release_year=${year}&vote_average.gte=${rating}&with_genres=${genre}&include_adult=false&include_video=false&page=1`,
+      )
+      .then(data => data);
+    return results;
+  }
+  const results = await axios
+    .get(
+      `${baseUrl}discover/tv?${apiUrl}&language=en-USsort_by=${sortBy}&first_air_date_year=${year}&page=1&vote_average.gte=${rating}&with_genres=${genre}&include_null_first_air_dates=false`,
+    )
+    .then(data => data);
+  return results;
+};
