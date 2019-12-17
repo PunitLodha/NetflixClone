@@ -96,7 +96,13 @@ const TvDetails = () => {
       trailer: '',
       seasons: '',
     });
-    getTvDetails(id).then(({ data }) => {
+    getTvDetails(id).then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       setTv(data);
       data.genres.forEach(item => {
         setOtherData(prevState => ({

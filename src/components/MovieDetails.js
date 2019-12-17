@@ -92,7 +92,13 @@ const MovieDetails = () => {
       runtime: '',
       trailer: '',
     });
-    getMovieDetails(id).then(({ data }) => {
+    getMovieDetails(id).then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       setMovie(data);
       data.genres.forEach(item => {
         setOtherData(prevState => ({

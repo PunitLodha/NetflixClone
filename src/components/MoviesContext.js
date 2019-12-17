@@ -17,56 +17,104 @@ const MoviesContextProvider = ({ children }) => {
   const [tvShows, settvShows] = useState([]);
 
   useEffect(() => {
-    getTopRatedMovies().then(({ data }) => {
+    getTopRatedMovies().then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       setmovies(prevState => ({
         ...prevState,
         topRated: data.results,
       }));
     });
 
-    getPopularMovies().then(({ data }) => {
+    getPopularMovies().then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       setmovies(prevState => ({
         ...prevState,
         popular: data.results,
       }));
     });
 
-    getUpcomingMovies().then(({ data }) => {
+    getUpcomingMovies().then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       setmovies(prevState => ({
         ...prevState,
         upcoming: data.results,
       }));
     });
 
-    getNowPlayingMovies().then(({ data }) => {
+    getNowPlayingMovies().then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       setmovies(prevState => ({
         ...prevState,
         nowPlaying: data.results,
       }));
     });
 
-    getTopRatedTvShows().then(({ data }) => {
+    getTopRatedTvShows().then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       settvShows(prevState => ({
         ...prevState,
         topRated: data.results,
       }));
     });
 
-    getPopularTvShows().then(({ data }) => {
+    getPopularTvShows().then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       settvShows(prevState => ({
         ...prevState,
         popular: data.results,
       }));
     });
 
-    getOnTheAirTvShows().then(({ data }) => {
+    getOnTheAirTvShows().then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       settvShows(prevState => ({
         ...prevState,
         onTheAir: data.results,
       }));
     });
 
-    getAiringTodayTvShows().then(({ data }) => {
+    getAiringTodayTvShows().then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       settvShows(prevState => ({
         ...prevState,
         airingToday: data.results,

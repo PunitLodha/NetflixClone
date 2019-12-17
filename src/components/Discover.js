@@ -76,7 +76,13 @@ const Discover = () => {
       filters.genre,
       filters.sortBy,
       filters.year,
-    ).then(({ data }) => {
+    ).then(response => {
+      let data;
+      if (response.data) {
+        data = response.data;
+      } else {
+        data = response;
+      }
       setResults(data.results);
     });
   }, [filters]);
