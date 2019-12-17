@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Typography, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemGrid from './ItemGrid';
 import { getMovieDetails } from '../api/TmdbAPI';
+import { ThemeContext } from './ThemeContext';
 
 const useStyles = makeStyles({
   paper: {
     maxWidth: '128rem',
     margin: '0 auto',
-    backgroundColor: '#161616',
+    backgroundColor: theme => `${theme.background}`,
+    boxShadow: 'none',
   },
   imgContainer: {
     height: '60rem',
@@ -67,7 +69,9 @@ const useStyles = makeStyles({
 });
 
 const MovieDetails = () => {
-  const classes = useStyles();
+  const { isLight, dark, light } = useContext(ThemeContext);
+  const theme = isLight ? light : dark;
+  const classes = useStyles(theme);
 
   const { id } = useParams();
 

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from './ThemeContext';
 
 const useStyles = makeStyles({
   conatiner: {
@@ -14,10 +15,10 @@ const useStyles = makeStyles({
     display: 'flex',
     padding: '2rem 1rem',
     maxWidth: '80rem',
-    color: 'white',
+    color: theme => `${theme.secondary}`,
     textDecoration: 'none',
     '&:hover': {
-      backgroundColor: '#424242',
+      backgroundColor: theme => `${theme.card}`,
     },
   },
   poster: {
@@ -30,7 +31,9 @@ const useStyles = makeStyles({
 });
 
 const DiscoverResults = ({ results, type }) => {
-  const classes = useStyles();
+  const { isLight, dark, light } = useContext(ThemeContext);
+  const theme = isLight ? light : dark;
+  const classes = useStyles(theme);
   const title = type === 'movie' ? 'title' : 'name';
   const link = type === 'movie' ? 'movies' : 'tv';
   return (

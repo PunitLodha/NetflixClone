@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Paper,
@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import { getDiscoverResults } from '../api/TmdbAPI';
 import DiscoverResults from './DiscoverResults';
+import { ThemeContext } from './ThemeContext';
 
 const useStyles = makeStyles({
   paper: {
@@ -19,7 +20,8 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#161616',
+    backgroundColor: theme => `${theme.background}`,
+    boxShadow: 'none',
   },
   formContainer: {
     margin: '2rem 0',
@@ -47,6 +49,10 @@ const menuProps = {
 };
 
 const Discover = () => {
+  const { isLight, dark, light } = useContext(ThemeContext);
+  const theme = isLight ? light : dark;
+  const classes = useStyles(theme);
+
   const [filters, setFilters] = useState({
     type: 'movie',
     year: '2019',
@@ -62,7 +68,6 @@ const Discover = () => {
       [name]: event.target.value,
     }));
   };
-  const classes = useStyles();
 
   useEffect(() => {
     getDiscoverResults(

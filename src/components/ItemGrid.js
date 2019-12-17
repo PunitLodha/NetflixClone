@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from './ThemeContext';
 
 const useStyles = makeStyles({
   container: {
     paddingTop: '4rem',
     paddingLeft: '4rem',
-    color: '#ccc',
+    color: theme => `${theme.text}`,
   },
   root: {
     height: '58rem',
@@ -41,7 +42,9 @@ const useStyles = makeStyles({
 });
 
 const ItemGrid = ({ items, type, name }) => {
-  const classes = useStyles();
+  const { isLight, dark, light } = useContext(ThemeContext);
+  const theme = isLight ? light : dark;
+  const classes = useStyles(theme);
   const title = type === 'movie' ? 'title' : 'name';
 
   return (
