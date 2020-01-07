@@ -7,18 +7,23 @@ export const baseUrl = 'https://api.themoviedb.org/3/';
 const apiUrl = `api_key=${API_KEY}`;
 
 export const caching = async url => {
-  const cacheData = await caches.open('netflixCloneCache').then(async cache => {
-    const match = await cache.match(url).then(async response => {
-      if (response) {
-        return response.json().then(res => res);
-      }
-      const result = await axios.get(url).then(data => data);
-      cache.add(url);
-      return result;
+  try {
+    const cacheData = await caches.open('netflixCloneCache').then(async cache => {
+      const match = await cache.match(url).then(async response => {
+        if (response) {
+          return response.json().then(res => res);
+        }
+        const result = await axios.get(url).then(data => data);
+        cache.add(url);
+        return result;
+      });
+      return match;
     });
-    return match;
-  });
-  return cacheData;
+    return cacheData;
+  } catch (error) {
+    const result = axios.get(url).then(data => data);
+    return result;
+  }
 };
 
 export const getTopRatedMovies = async () => {
