@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, useMediaQuery } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from './ThemeContext';
 
@@ -9,6 +9,10 @@ const useStyles = makeStyles({
     paddingTop: '4rem',
     paddingLeft: '4rem',
     color: theme => `${theme.text}`,
+    '@media (max-width:720px)': {
+      paddingLeft: '2rem',
+      paddingTop: '1rem',
+    },
   },
   root: {
     height: '58rem',
@@ -20,20 +24,25 @@ const useStyles = makeStyles({
     padding: '0',
     margin: '0',
     transition: 'all 0.5s',
-    '&:hover li': {
-      opacity: '0.5',
-      transform: 'translateX(-2rem)',
+    '@media (hover:hover)': {
+      '&:hover li': {
+        opacity: '0.5',
+        transform: 'translateX(-2rem)',
+      },
     },
   },
   list: {
     margin: '0 5px',
     transition: 'all 0.5s',
-    '&&:hover': {
-      opacity: '1',
-      transform: 'scale(1.1) translateX(0)',
-    },
-    '&&:hover ~ *': {
-      transform: 'translateX(2rem)',
+    '@media (hover:hover)': {
+      '&&:hover': {
+        opacity: '1',
+        transform: 'scale(1.1) translateX(0)',
+      },
+
+      '&&:hover ~ *': {
+        transform: 'translateX(2rem)',
+      },
     },
   },
   poster: {
@@ -46,17 +55,22 @@ const ItemGrid = ({ items, type, name }) => {
   const theme = isLight ? light : dark;
   const classes = useStyles(theme);
   const title = type === 'movie' ? 'title' : 'name';
+  const mobile = useMediaQuery('(max-width:720px)');
+  const posterSize = mobile ? '185' : '342';
+  const posterRadius = mobile ? '1rem' : '2rem';
+  const rootSize = mobile ? '32rem' : '58rem';
 
   return (
     <div className={classes.container}>
       <Typography variant="h4">{name}</Typography>
-      <ul className={classes.root}>
+      <ul style={{ height: rootSize }} className={classes.root}>
         {items.map(item => (
           <li key={item.id} className={classes.list}>
             <Link to={`/${type}/${item.id}`} key={item.id}>
               <img
-                src={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w${posterSize}${item.poster_path}`}
                 alt={item[title]}
+                style={{ borderRadius: posterRadius }}
                 className={classes.poster}
               />
             </Link>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { Typography, Paper } from '@material-ui/core';
+import { Typography, Paper, useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ItemGrid from './ItemGrid';
 import { getTvDetails } from '../api/TmdbAPI';
@@ -28,6 +28,14 @@ const useStyles = makeStyles({
       backgroundImage:
         'linear-gradient(to right, rgba(0,0,0,0.8),  rgba(0,0,0,0.8) 20%,rgba(0,0,0,0))',
     },
+    '@media (max-width:720px) and (min-width:600px)': {
+      height: '43rem',
+      padding: '4rem 2rem',
+    },
+    '@media (max-width:600px) ': {
+      height: '43rem',
+      padding: '2rem 2rem',
+    },
   },
   details: {
     color: 'white',
@@ -36,14 +44,36 @@ const useStyles = makeStyles({
   },
   title: {
     marginBottom: '1.5rem',
+    '@media (max-width:720px) and (min-width: 600px)': {
+      fontSize: '3.5rem',
+    },
+    '@media (max-width:500px)': {
+      fontSize: '3rem',
+      marginBottom: '0.6rem',
+    },
   },
   info: {
     marginBottom: '3rem',
     color: '#ccc',
+    '@media (max-width:720px) and (min-width: 600px)': {
+      fontSize: '1.8rem',
+    },
+    '@media (max-width:500px)': {
+      marginBottom: '1rem',
+    },
   },
   overview: {
     fontFamily: 'Helvetica,sans-serif',
     marginBottom: '3rem',
+    '@media (max-width:720px) and (min-width: 600px)': {
+      fontSize: '1.8rem',
+    },
+    '@media (max-width:720px)': {
+      marginBottom: '1rem',
+    },
+    '@media (max-width:400px)': {
+      fontSize: '1.5rem',
+    },
   },
   container: {
     display: 'flex',
@@ -51,9 +81,15 @@ const useStyles = makeStyles({
   subtitle: {
     color: '#ccc',
     marginBottom: '0.5rem',
+    '@media (max-width:720px) and (min-width: 600px)': {
+      fontSize: '1.5rem',
+    },
   },
   subcontent: {
     marginLeft: '0.5rem',
+    '@media (max-width:720px) and (min-width: 600px)': {
+      fontSize: '1.5rem',
+    },
   },
   trailer: {
     display: 'flex',
@@ -72,6 +108,9 @@ const TvDetails = () => {
   const { isLight, dark, light } = useContext(ThemeContext);
   const theme = isLight ? light : dark;
   const classes = useStyles(theme);
+
+  const mobile = useMediaQuery('(max-width:720px)');
+  const posterSize = mobile ? '780' : '1280';
 
   const { id } = useParams();
 
@@ -172,7 +211,7 @@ const TvDetails = () => {
       </div>
       <div
         style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/w1280${tv.backdrop_path}`,
+          backgroundImage: `url(https://image.tmdb.org/t/p/w${posterSize}${tv.backdrop_path}`,
         }}
         className={classes.imgContainer}
       >

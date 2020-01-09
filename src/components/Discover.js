@@ -8,6 +8,7 @@ import {
   Select,
   MenuItem,
   Input,
+  useMediaQuery,
 } from '@material-ui/core';
 import { getDiscoverResults } from '../api/TmdbAPI';
 import DiscoverResults from './DiscoverResults';
@@ -27,10 +28,18 @@ const useStyles = makeStyles({
     margin: '2rem 0',
     display: 'flex',
     justifyContent: 'space-between',
+    '@media (max-width:500px)': {
+      maxWidth: '35rem',
+      flexWrap: 'wrap',
+    },
   },
   form: {
     margin: '0 2rem',
     minWidth: '12rem',
+    '@media (max-width:720px)': {
+      minWidth: '0',
+      margin: '0 1rem',
+    },
   },
   title: {
     margin: '2rem 0',
@@ -52,6 +61,9 @@ const Discover = () => {
   const { isLight, dark, light } = useContext(ThemeContext);
   const theme = isLight ? light : dark;
   const classes = useStyles(theme);
+
+  const mobile = useMediaQuery('(max-width:500px)');
+  const style = mobile ? { margin: '1rem auto' } : {};
 
   const [filters, setFilters] = useState({
     type: 'movie',
@@ -165,7 +177,7 @@ const Discover = () => {
           </Select>
         </FormControl>
 
-        <FormControl className={classes.form}>
+        <FormControl style={style} className={classes.form}>
           <InputLabel>Genres</InputLabel>
           <Select
             value={filters.genre}
