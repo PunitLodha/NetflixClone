@@ -56,12 +56,12 @@ const Container = () => {
           <ScrollToTop />
           <NavBar />
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/movies" exact component={Movies} />
-            <Route path="/tv" exact component={Tv} />
-            <Route path="/discover" component={Discover} />
-            <Route path="/movies/:id" component={MovieDetails} />
-            <Route path="/tv/:id" component={TvDetails} />
+            <Route path="/NetflixClone/" exact component={Home} />
+            <Route path="/NetflixClone/movies" exact component={Movies} />
+            <Route path="/NetflixClone/tv" exact component={Tv} />
+            <Route path="/NetflixClone/discover" component={Discover} />
+            <Route path="/NetflixClone/movies/:id" component={MovieDetails} />
+            <Route path="/NetflixClone/tv/:id" component={TvDetails} />
           </Switch>
         </Router>
       </div>

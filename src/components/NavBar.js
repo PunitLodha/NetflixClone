@@ -80,29 +80,29 @@ const NavBar = () => {
       <AppBar position="sticky" className={classes.appBar}>
         <Toolbar>
           <ul className={classes.nav}>
-            <Link to="/" style={{ marginRight: logoMargin }}>
+            <Link to="/NetflixClone/" style={{ marginRight: logoMargin }}>
               <li>
                 <img src={logo} alt="Netflix logo" className={classes.img} />
               </li>
             </Link>
-            <NavLink style={{ display }} exact className={classes.linkStyle} to="/">
+            <NavLink style={{ display }} exact className={classes.linkStyle} to="/NetflixClone/">
               <li>
                 <Typography variant="h6">Home</Typography>
               </li>
             </NavLink>
-            <NavLink style={{ display }} className={classes.linkStyle} to="/movies">
+            <NavLink style={{ display }} className={classes.linkStyle} to="/NetflixClone/movies">
               <li>
                 <Typography variant="h6">Movies</Typography>
               </li>
             </NavLink>
-            <NavLink style={{ display }} className={classes.linkStyle} to="/tv">
+            <NavLink style={{ display }} className={classes.linkStyle} to="/NetflixClone/tv">
               <li>
                 <Typography variant="h6">TV Shows</Typography>
               </li>
             </NavLink>
             <NavLink
               className={classes.linkStyle}
-              to="/discover"
+              to="/NetflixClone/discover"
               style={{ marginRight: 'auto', display }}
             >
               <li>
@@ -126,16 +126,16 @@ const NavBar = () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <Link to="/" className={classes.menuItem}>
+              <Link to="/NetflixClone/" className={classes.menuItem}>
                 <MenuItem onClick={handleClose}>Home</MenuItem>
               </Link>
-              <Link to="/movies" className={classes.menuItem}>
+              <Link to="/NetflixClone/movies" className={classes.menuItem}>
                 <MenuItem onClick={handleClose}>Movies</MenuItem>
               </Link>
-              <Link to="/tv" className={classes.menuItem}>
+              <Link to="/NetflixClone/tv" className={classes.menuItem}>
                 <MenuItem onClick={handleClose}>TV Shows</MenuItem>
               </Link>
-              <Link to="/discover" className={classes.menuItem}>
+              <Link to="/NetflixClone/discover" className={classes.menuItem}>
                 <MenuItem onClick={handleClose}>Discover</MenuItem>
               </Link>
             </Menu>
