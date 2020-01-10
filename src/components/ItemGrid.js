@@ -66,7 +66,7 @@ const ItemGrid = ({ items, type, name }) => {
       <ul style={{ height: rootSize }} className={classes.root}>
         {items.map(item => (
           <li key={item.id} className={classes.list}>
-            <Link to={`/${type}/${item.id}`} key={item.id}>
+            <Link to={`/NetflixClone/${type}/${item.id}`} key={item.id}>
               <img
                 src={`https://image.tmdb.org/t/p/w${posterSize}${item.poster_path}`}
                 alt={item[title]}

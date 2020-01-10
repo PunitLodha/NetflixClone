@@ -59,7 +59,11 @@ const DiscoverResults = ({ results, type }) => {
       <ul className={classes.conatiner}>
         {results.map(result => (
           <li key={result.id}>
-            <Link to={`/${link}/${result.id}`} key={result.id} className={classes.item}>
+            <Link
+              to={`/NetflixClone/${link}/${result.id}`}
+              key={result.id}
+              className={classes.item}
+            >
               <img
                 src={`https://image.tmdb.org/t/p/w${posterSize}${result.poster_path}`}
                 alt={result[title]}
