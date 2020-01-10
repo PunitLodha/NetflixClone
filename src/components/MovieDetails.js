@@ -110,7 +110,16 @@ const MovieDetails = () => {
   const classes = useStyles(theme);
 
   const mobile = useMediaQuery('(max-width:720px)');
+  const smallMobile = useMediaQuery('(max-width:500px)');
   const posterSize = mobile ? '780' : '1280';
+  let trailerSize;
+  if (smallMobile) {
+    trailerSize = '220px';
+  } else if (mobile) {
+    trailerSize = '380px';
+  } else {
+    trailerSize = '600px';
+  }
 
   const { id } = useParams();
 
@@ -186,7 +195,7 @@ const MovieDetails = () => {
           src={`https://www.youtube.com/embed/${otherData.trailer}`}
           title="Trailer"
           width="1280"
-          height="600"
+          height={trailerSize}
           frameBorder="0"
         />
       </div>
